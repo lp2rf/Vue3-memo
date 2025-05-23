@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import indexStore from "@/stores";
+import { indexStore } from "@/stores";
 import Cataloge from "./cataloge.vue";
 import Memos from "./memos.vue";
 const store = indexStore();

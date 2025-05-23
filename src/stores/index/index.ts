@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import type { CatalogType, MemoType } from "./type";
-import { localGetItem, localSetItem } from "@/utils";
+import { geneId, localGetItem, localSetItem } from "@/utils";
 const indexStore = defineStore("index", {
   state: () => ({
     catalogs: [] as CatalogType[],
@@ -29,6 +29,11 @@ const indexStore = defineStore("index", {
     setCataid(id: number | null) {
       this.active_cataid = id;
       localSetItem("active_cataid", id);
+    },
+    createCata(val: CatalogType) {
+      let curcata = Object.assign({}, val, { cata_id: geneId() });
+      this.catalogs.push(curcata);
+      localSetItem("catalogs", this.catalogs);
     },
   },
 });
